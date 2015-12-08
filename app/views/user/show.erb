@@ -12,7 +12,9 @@ Name: <%= @user.name %>
 Email: <%= @user.email %>
 <br>
 <br>
-<a href="/users/<%= @user.id %>/edit"><button>Edit My Profile</button></a>
+<% if @user.id == current_user.id %>
+	<a href="/users/<%= @user.id %>/edit"><button>Edit My Profile</button></a>
+
 <br>
 
 <form action="/users/<%= @user.id %>" method="post">
@@ -20,7 +22,10 @@ Email: <%= @user.email %>
 	<input type="submit" value="Delete profile">
 </form>
 	<br>
+<a href="/users/properties"><button>See My Property</button></a>
 <a href="/property/new"><button>Create new Property</button></a>
+
+<%end%>
 		<br>
 		<br>
 <a href="/users/logout"><button>Logout</button></a>

@@ -13,6 +13,10 @@
 <p>Property Price: RM<%= @property.property_price %> per month</p>
 Posted by: <%= @property.user.name%> <br><br>
 
+
+<p>Booking Info: <%= @booking.booking_notes %></p>
+
+
 Comments: <br>
 
 <% @comments.each_with_index do |comment, index| %>
@@ -32,6 +36,8 @@ Comments: <br>
 	<br>
 
 <a href="/property/<%= @property.id %>/comments/new"><button>Add new comment</button></a><br><br>
+
+<a href="/property/<%= @property.id %>/booking/new"><button>New booking</button></a><br><br>
 
 <!-- 	<form action="/property/<%= @property.id %>" method="post">
 		<input type="hidden" name="booking" value="true">

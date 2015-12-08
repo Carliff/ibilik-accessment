@@ -1,0 +1,28 @@
+<h1>New Booking</h1>
+
+<% if logged_in? %>
+<h2>You are logged in as <%= @user.name %><br></h2>
+<%else%>
+<h2>You are currently not logged in</h2><br>
+<%end%>
+
+<%=@warning if @warning%>
+
+<h2>Property Name: <%= @property.property_name %></h2>
+
+<% if logged_in? %>
+
+<form action="/property/<%= @property.id %>/booking" method="POST">
+	<label>Make Booking?: </label>
+	<input type="hidden" name="booking" value="false" />
+	<input type="checkbox" name="booking" value="true" /><br>
+	<label>Booking Notes: </label>
+	<input type="text" name="notes"><br>
+	<input type="submit" value="SUBMIT">
+</form>
+
+<br>
+<br>
+<%end%>
+
+<a href="/"><button>HOME</button></a>

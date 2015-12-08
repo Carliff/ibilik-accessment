@@ -1,12 +1,4 @@
-<h1>iBilik HOME Page</h1>
-
-<% if logged_in? %>
-	<p>You are logged in as <%= @user.name %><br></p>
-<%else%>
-	<p>You are currently not logged in</p><br>
-<%end%>
-
-<h2>Property Listings</h2>
+<h2>My Property Listings</h2>
 
 <% @property.each_with_index do |property, index| %>
   <a href="/property/<%= property.id %>">
@@ -40,5 +32,5 @@
 		<br>
 		<br>
 	<a href="/"><button>HOME</button></a>
-	
+
 <%end%>

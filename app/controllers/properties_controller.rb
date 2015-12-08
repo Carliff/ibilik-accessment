@@ -1,3 +1,12 @@
+# Display All my property
+get "/users/properties" do
+	@user = current_user
+	# @property = Property.find(params[:id])
+	@property = Property.all
+	erb :"user/properties"
+end
+
+
 # Display new property form
 get "/property/new" do
 	@user = current_user

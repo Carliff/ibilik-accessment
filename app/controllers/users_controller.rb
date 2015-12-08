@@ -8,7 +8,7 @@ end
 
 # User login
 
-post '/users/login' do
+post "/users/login" do
 	User.connection
 	user = User.authenticate(params[:email], params[:password])
 	if user 
@@ -36,7 +36,7 @@ post "/users" do
 
 	if user.save
 		session[:user_id] = user.id
-		redirect "/users/#{@user.id}"
+		redirect "/users/#{user.id}"
 	else
 		warning = "Sign up failed, invalid or incomplete info, please retry"
 		# erb :'/user/new'
@@ -48,31 +48,23 @@ end
 # View user profile
 
 get '/users/:id' do
-	@user = current_user
+	@user = User.find(params[:id])
 	erb :'user/show'
 end
 
 # Display Edit User form
 
 get '/users/:id/edit' do
-	if current_user.id == params[:id]
-		@user = current_user
-		erb :'user/edit'
-	else
-		redirect "/"
-	end
+	@user = User.find(params[:id])
+	erb :'user/edit'
 end 
 
 # Edit user
 
 patch '/users/:id' do
-	if current_user.id == params[:id]
-		user = User.find(params[:id])
-		user.update(name: params[:name], email: params[:email], password: params[:password])
-		redirect "/users/#{user.id}"
-	else
-		redirect "/"
-	end
+	user = User.find(params[:id])
+	user.update(name: params[:name], email: params[:email], password: params[:password])
+	redirect "/users/#{user.id}"
 end
 
 
