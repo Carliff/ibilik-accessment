@@ -10,11 +10,12 @@ end
 post "/property" do
 	# byebug
 	@user = current_user
-	@property = Property.new(property_name: params[:property_name], property_address: params[:property_address], property_info: params[:property_info], property_price: params[:property_price], user_id: session[:user_id])
+	property = current_user.properties.new(property_name: params[:property_name], property_address: params[:property_address], property_info: params[:property_info], property_price: params[:property_price])
+	# @property = Property.new(property_name: params[:property_name], property_address: params[:property_address], property_info: params[:property_info], property_price: params[:property_price], user_id: session[:user_id])
 
-	if @property.save
+	if property.save
 		# erb :"/user/questions"
-		redirect to "/property/#{@property.id}"
+		redirect to "/property/#{property.id}"
 	else
 		@warning = "Action failed, invalid or incomplete info, please retry"
 		erb :"property/new"
@@ -28,6 +29,7 @@ get "/property/:id" do
 	@user = current_user
 	@property = Property.find(params[:id])
 	@comments = @property.comments
+	#@owner = @property.user.id
 	erb :'property/show'
 end
 
@@ -39,6 +41,8 @@ get '/property/:id/edit' do
 	@property = Property.find(params[:id])
 	erb :'property/edit'
 end
+
+
 
 # Edit Property
 

@@ -1,22 +1,22 @@
 <h1>Create New User</h1>
 
 <% if logged_in? %>
-<h2>You are logged in as <%= @user.name %><br></h2>
+	<h2>You are logged in as <%= @user.name %><br></h2>
 <%else%>
-<h2>You are currently not logged in</h2><br>
+	<h2>You are currently not logged in</h2><br>
 <%end%>
 
 <%=@warning if @warning%>
 
 <form action="/users" method="POST">
 	<label>Full Name: </label>
-	<input type="text" name="name"><br>
+	<input type="text" name="user[name]"><br>
 	<label>Email: </label>
-	<input type="email" name="email"><br>
+	<input type="email" name="user[email]"><br>
 	<label>Password: </label>
-	<input type="password" name="password"><br>
+	<input type="password" name="user[password]"><br>
 	<label>Re-type Password: </label>
-	<input type="password" name="password_confirmation"><br>
+	<input type="password" name="user[password_confirmation]"><br>
 	<input type="submit" value="Sign Up">
 </form>
 
