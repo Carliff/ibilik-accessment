@@ -8,9 +8,11 @@ end
 # Create new property
 
 post "/property" do
-	# byebug
 	@user = current_user
-	property = current_user.properties.new(property_name: params[:property_name], property_address: params[:property_address], property_info: params[:property_info], property_price: params[:property_price])
+	property = current_user.properties.new(params[:property])
+
+	# property = current_user.properties.new(property_name: params[:property_name], property_address: params[:property_address], property_info: params[:property_info], property_price: params[:property_price])
+
 	# @property = Property.new(property_name: params[:property_name], property_address: params[:property_address], property_info: params[:property_info], property_price: params[:property_price], user_id: session[:user_id])
 
 	if property.save
@@ -39,7 +41,12 @@ end
 get '/property/:id/edit' do
 	@user = current_user
 	@property = Property.find(params[:id])
-	erb :'property/edit'
+	
+	if @property.user.id == current_user.id
+		erb :'property/edit'
+	else
+		redirect "/"
+	end
 end
 
 
@@ -49,8 +56,13 @@ end
 patch '/property/:id' do
 	@user = current_user
 	property = Property.find(params[:id])
-	property.update(property_name: params[:property_name], property_address: params[:property_address], property_info: params[:property_info], property_price: params[:property_price])
-	redirect "/property/#{property.id}"
+
+	if property.user.id == current_user.id
+		property.update(property_name: params[:property_name], property_address: params[:property_address], property_info: params[:property_info], property_price: params[:property_price])
+		redirect "/property/#{property.id}"
+	else
+		redirect "/"
+	end
 end
 
 # Delete Property
