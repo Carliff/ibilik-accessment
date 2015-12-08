@@ -61,20 +61,20 @@ end
 
 # Booking True / False
 
-post '/property/:id' do
-	@user = current_user
-	@property = Property.find(params[:id])
-	@comments = @property.comments
+# post '/property/:id' do
+# 	@user = current_user
+# 	@property = Property.find(params[:id])
+# 	@comments = @property.comments
 
-	booking = Booking.create(voteable: @property, user: current_user, booking: params[:booking])
-	# if vote.valid?
- #    flash[:notice] = "Your vote was counted."
- #  else
- #    flash[:error] = "You can only vote once."
- #  end
-	# erb :'question/show'
-	redirect "/property/#{property.id}"
-end
+# 	booking = Booking.create(voteable: @property, user: current_user, booking: params[:booking])
+# 	# if vote.valid?
+#  #    flash[:notice] = "Your vote was counted."
+#  #  else
+#  #    flash[:error] = "You can only vote once."
+#  #  end
+# 	# erb :'question/show'
+# 	redirect "/property/#{property.id}"
+# end
 
 # booking = @property.bookings.find_or_initialize_by(user_id: session[:user_id])
 # 	if booking.id.nil?

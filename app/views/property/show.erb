@@ -28,7 +28,7 @@ Comments: <br><br>
 
 <% if logged_in? %>
 
-	<form action="/property/<%= @property.id %>" method="post">
+<!-- 	<form action="/property/<%= @property.id %>" method="post">
 		<input type="hidden" name="booking" value="true">
 		<input type="submit" value="Make Booking">
 		</form>
@@ -36,7 +36,7 @@ Comments: <br><br>
 		<form action="/property/<%= @property.id %>" method="post">
 		<input type="hidden" name="booking" value="false">
 		<input type="submit" value="Cancel Booking">
-	</form>v
+	</form>v -->
 
 	<a href="/property/<%= @property.id %>/edit"><button>Edit Property</button></a><br><br>
 	<a href="/property/new"><button>Create new Property</button></a>
