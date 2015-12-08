@@ -1,22 +1,27 @@
-<h1>iBilik HOME Page</h1>
+<h1>Show Property</h1>
 
 <% if logged_in? %>
-	<p>You are logged in as <%= @user.name %><br></p>
+<h2>You are logged in as <%= @user.name %><br></h2>
 <%else%>
-	<p>You are currently not logged in</p><br>
+<h2>You are currently not logged in</h2><br>
 <%end%>
 
-<h2>Latest Questions!</h2>
 
-<% @property.each_with_index do |property, index| %>
-  <a href="/property/<%= property.id %>">
-    <p><%= "#{index + 1})  #{property.property_name}, Location: #{property.property_address}, Price:RM#{property.property_price}, Posted by: #{property.user.name}" %></p>
-  </a>
-	<% end %>
+<h2>Property Name: <%= @property.property_name %></h2>
+<p>Property Address: <%= @property.property_address %></p>
+<p>Property Info: <%= @property.property_info %></p>
+<p>Property Price: RM<%= @property.property_price %> per month</p>
+Posted by: <%= @property.user.name%> <br><br>
 
+Comments: <br><br>
+
+
+
+<br><br>
 
 <% if logged_in? %>
 
+	<a href="/property/<%= @property.id %>/edit"><button>Edit Property</button></a><br><br>
 	<a href="/property/new"><button>Create new Property</button></a>
 		<br>
 		<br>

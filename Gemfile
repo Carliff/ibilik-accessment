@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 # Ruby Version
 # ruby "2.2.1"
 
+gem 'byebug'
+
 # Adding Sinatra Drivers
 gem 'sinatra'
 gem 'sinatra-contrib'
@@ -14,6 +16,9 @@ gem 'thin'
 gem 'activerecord'
 gem 'activesupport'
 gem 'sinatra-activerecord'
+
+#Adding bcrypt
+gem 'bcrypt', '~> 3.1.7'
 
 # Adding Database elements
 gem 'pg'

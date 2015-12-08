@@ -1,0 +1,30 @@
+<h1>Edit Property</h1>
+
+<% if logged_in? %>
+<h2>You are logged in as <%= @user.name %><br></h2>
+<%else%>
+<h2>You are currently not logged in</h2><br>
+<%end%>
+
+<br>
+
+<form action="/property/<%= @property.id %>" method="post">
+	<input type="hidden" name="_method" value="patch">
+	<label>Property Name: </label>
+	<input type="text" name="property_name" value="<%= @property.property_name%>"><br>
+	<label>Property Address: </label>
+	<input type="text" name="property_address" value="<%= @property.property_address%>"><br>
+	<label>Property Info: </label>
+	<input type="text" name="property_info" value="<%= @property.property_info%>"><br>
+	<label>Property Price: RM</label>
+	<input type="text" name="property_price" value="<%= @property.property_price%>">per month
+
+	<br><br>
+
+	<input type="submit" value="Update property">
+</form>
+
+<form action="/property/<%= @property.id %>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete property">
+</form>
