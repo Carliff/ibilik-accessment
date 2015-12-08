@@ -1,0 +1,20 @@
+<h1>New Comment</h1>
+
+<% if logged_in? %>
+<h2>You are logged in as <%= @user.name %><br></h2>
+<%else%>
+<h2>You are currently not logged in</h2><br>
+<%end%>
+
+<%=@warning if @warning%>
+
+<form action="/property/<%= @property.id %>/comments" method="POST">
+	<label>Comment: </label>
+	<input type="text" name="comment"><br>
+	<input type="submit" value="SUBMIT">
+</form>
+
+<br>
+<br>
+
+<a href="/"><button>HOME</button></a>

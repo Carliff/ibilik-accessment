@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
 	has_secure_password
 
 	has_many :properties
-	# has_many :comments
-	# has_many :bookings
+	has_many :comments
+	has_many :bookings
 
 	validates :email,
 		uniqueness: true,

@@ -15,11 +15,28 @@ Posted by: <%= @property.user.name%> <br><br>
 
 Comments: <br><br>
 
+<% @comments.each_with_index do |comment, index| %>
+<%= "#{index + 1})  '#{comment.comment}'  (#{comment.user.name})"%>
+		<%end%>
+
+<br><br>
+
+<a href="/property/<%= @property.id %>/comments/new"><button>Add new comment</button></a><br><br>
 
 
 <br><br>
 
 <% if logged_in? %>
+
+	<form action="/property/<%= @property.id %>" method="post">
+		<input type="hidden" name="booking" value="true">
+		<input type="submit" value="Make Booking">
+		</form>
+
+		<form action="/property/<%= @property.id %>" method="post">
+		<input type="hidden" name="booking" value="false">
+		<input type="submit" value="Cancel Booking">
+	</form>v
 
 	<a href="/property/<%= @property.id %>/edit"><button>Edit Property</button></a><br><br>
 	<a href="/property/new"><button>Create new Property</button></a>
